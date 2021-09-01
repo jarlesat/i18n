@@ -97,6 +97,8 @@ public class WebMessageExtractor extends AbstractExtractorHandler implements Mes
             InputSource input = new InputSource(in);
             input.setSystemId(systemId);
             extractMessages(input);
+        } catch (MessageExtractorException e) {
+            throw new MessageExtractorException(file.getAbsolutePath(), e);
         } finally {
             in.close();
         }
